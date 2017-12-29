@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <!--Framework Integrate-->
+    <parent>
+        <artifactId>framework-integrate</artifactId>
+        <groupId>cn.thinkbam</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--项目基本信息-->
+    <artifactId>sm</artifactId>
+    <packaging>war</packaging>
+    <name>Spring Mybatis集成</name>
+
+    <!--依赖-->
+    <dependencies>
+        <!--Spring-core-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--spring-contex-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+    </dependencies>
+    <!--编译设置-->
+    <build>
+        <finalName>sm</finalName>
+    </build>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--项目信息-->
+    <name>Framework for the integration</name>
+    <modules>
+        <module>ssm</module>
+        <module>sm</module>
+        <module>mybatis</module>
+        <module>dubbo</module>
+        <module>castor-oxmapping</module>
+    </modules>
+
+    <!--基本信息-->
+    <groupId>cn.thinkbam</groupId>
+    <artifactId>framework-integrate</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <junit.version>4.9</junit.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
+        <project.version>1.0-SNAPSHOT</project.version>
+    </properties>
+
+    <!--依赖-->
+    <dependencies>
+        <!--Junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

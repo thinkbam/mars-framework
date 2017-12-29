@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.thinkbam.domain.Classes">
+
+    <!--
+        方式一：嵌套结果
+        使用嵌套结果映射来处理重复的联合结果的子集，封装联表查询的数据(去除重复的数据)
+    -->
+    <select id="getClass1" parameterType="int" resultMap="classResultMap1">
+        SELECT *
+        FROM ${db.schema}.class c, ${db.schema}.teacher t
+        WHERE c.teacher_id=t.t_id
+        AND c.c_id=#{classId}
+    </select>
+    <!--使用resultMap映射实体类和字段之间的一一映射关系-->
+    <resultMap id="classResultMap1" type="cn.thinkbam.domain.Classes">
+        <id property="classId" column="c_id" javaType="int" jdbcType="INTEGER"/>
+        <result property="className" column="c_name" javaType="String" jdbcType="VARCHAR"/>
+        <association property="teacher" javaType="cn.thinkbam.domain.Teacher">
+            <id property="teacherId" column="t_id" javaType="int" jdbcType="INTEGER"/>
+            <result property="teacherName" column="t_name" javaType="String" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <!--
+        方式二：嵌套查询：
+        通过执行另外一个SQL映射语句来返回预期的复杂类型
+    -->
+    <select id="getClass2" parameterType="int" resultMap="classResultMap2">
+        SELECT *  FROM ${db.schema}.class WHERE c_id = #{classId}
+    </select>
+    <!--使用resultMap映射实体类和字段之间的一一映射关系-->
+    <resultMap id="classResultMap2" type="cn.thinkbam.domain.Classes">
+        <id property="classId" column="c_id" javaType="int" jdbcType="INTEGER"/>
+        <result property="className" column="c_name" javaType="String" jdbcType="VARCHAR"/>
+        <association property="teacher" column="teacher_id" select="getTeacher"/>
+    </resultMap>
+    <select id="getTeacher" parameterType="int" resultType="cn.thinkbam.domain.Teacher">
+        select * from ${db.schema}.teacher WHERE t_id = #{teacherId}
+    </select>
+</mapper>

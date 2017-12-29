@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--Framework Integrate-->
+    <parent>
+        <artifactId>framework-integrate</artifactId>
+        <groupId>cn.thinkbam</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--基本信息-->
+    <artifactId>mybatis</artifactId>
+    <name>Mybatis连接数据库</name>
+
+    <!--属性-->
+    <properties>
+        <mybatis.version>3.2.5</mybatis.version>
+        <mysql.version>5.1.38</mysql.version>
+    </properties>
+
+    <!--依赖-->
+    <dependencies>
+        <!--Mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!--MySQL驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+    </dependencies>
+</project>

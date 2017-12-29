@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.thinkbam.domain.Courses">
+
+    <!--根据ID查询课程，这个查询的结果不是我们所想要的，因为表字段名称和实体类属性名称对不上，因此无法查询对应的记录-->
+    <select id="getCoursesById" parameterType="int" resultType="cn.thinkbam.domain.Courses">
+        SELECT  courses_id,courses_name,courses_sub
+        FROM ${db.schema}.courses
+        WHERE courses_id=#{id}
+    </select>
+
+    <!--根据id查询得到Courses对象，使用这个查询是可以正常查询到我们想要的结果的，
+    因为我们将查询的字段名都起一个和实体类属性名相同的别名，这样实体类的属性名和查询结果中的字段名就可以一一对应上-->
+    <select id="getCourses1" parameterType="int" resultType="cn.thinkbam.domain.Courses">
+        SELECT  courses_id as coursesId,courses_name as coursesName,courses_sub as coursesSub
+        FROM ${db.schema}.courses
+        WHERE courses_id=#{id}
+    </select>
+
+    <!--根据id查询得到Courses对象，使用这个查询是可以正常查询到我们想要的结果的，
+    这是因为我们通过<resultMap>映射实体类属性名和表的字段名一一对应关系-->
+    <select id="getCourses2" parameterType="int" resultMap="coursesResultMap">
+        SELECT  courses_id,courses_name,courses_sub
+        FROM ${db.schema}.courses
+        WHERE courses_id=#{id}
+    </select>
+
+    <!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+    <resultMap id="coursesResultMap" type="cn.thinkbam.domain.Courses">
+        <result property="coursesId" column="courses_id" javaType="int" jdbcType="INTEGER"/>
+        <result property="coursesName" column="courses_name" javaType="String" jdbcType="VARCHAR"/>
+        <result property="coursesSub" column="courses_sub" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+</mapper>

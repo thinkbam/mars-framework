@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">-->
+<mapping>
+    <class name="cn.thinkbam.castor.vo.MessageConfigurationVO">
+        <map-to xml="request"/>
+        <field name="name" type="string">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+        <field name="code" type="string">
+            <bind-xml name="code" node="attribute"/>
+        </field>
+        <field name="service" type="string">
+            <bind-xml name="service" node="element"/>
+        </field>
+        <field name="method" type="string">
+            <bind-xml name="method" node="attribute"/>
+        </field>
+        
+        <field name="input" collection="array" type="cn.thinkbam.castor.vo.FieldVO">
+            <bind-xml name="field" location="input" />
+        </field>
+    </class>
+
+    <!--Field-->
+    <class name="cn.thinkbam.castor.vo.FieldVO">
+        <map-to xml="field"/>
+        <field name="name" type="string">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+        <field name="value" type="string">
+            <bind-xml name="value" node="attribute"/>
+        </field>
+    </class>
+</mapping>

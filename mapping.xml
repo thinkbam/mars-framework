@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message-configuration-vO>
+    <service>Service名称</service>
+    <result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://java.sun.com"
+            xsi:type="java:org.exolab.castor.mapping.MapItem">
+        <key xsi:type="java:java.lang.String">key1</key>
+        <value xsi:type="java:java.lang.String">value1</value>
+    </result>
+    <result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://java.sun.com"
+            xsi:type="java:org.exolab.castor.mapping.MapItem">
+        <key xsi:type="java:java.lang.String">key2</key>
+        <value xsi:type="java:java.lang.String"></value>
+    </result>
+    <company>
+        <address>安徽合肥</address>
+        <name>上海屹通</name>
+    </company>
+    <name>报文名称</name>
+    <code>报文编码</code>
+    <method>Method名称</method>
+</message-configuration-vO>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引用application.properties配置文件
+    使用application.properties文件中的值，使用${key}进行取值-->
+    <properties resource="config/application.properties"/>
+
+    <!--为实体类cn.thinkbam.domain.User定义别名UserAlias-->
+    <!--<typeAliases>-->
+        <!--<typeAlias type="cn.thinkbam.domain.User" alias="UserAlias"/>-->
+    <!--</typeAliases>-->
+
+
+    <!--批量为cn.thinbkam.domain包下所有实体类设置别名，MyBatis默认设置别名的方式就是去除类所在的包后的简单类名，
+    如：cn.thinkbam.domain.User这个类的别名就会被设置成User。
+    配置实体类别名的目的是为了在引用实体类时可以使用实体类的别名来代替实体类，达到简写的目的。-->
+    <!--<typeAliases>-->
+        <!--<package name="cn.thinkbam.domain" />-->
+    <!--</typeAliases>-->
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <!-- value属性值引用db.properties配置文件中配置的值 -->
+                <property name="driver" value="${runtime.datasource.default.driverClass}"/>
+                <property name="url" value="${runtime.datasource.default.jdbcUrl}"/>
+                <property name="username" value="${runtime.datasource.default.username}"/>
+                <property name="password" value="${runtime.datasource.default.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--注册User.map.xml文件-->
+        <mapper resource="sqlmap/User.map.xml"/>
+        <!--注册UserAnnotation映射接口-->
+        <mapper class="cn.thinkbam.dao.UserAnnotation"/>
+        <!--注册courses.map.xml文件-->
+        <mapper resource="sqlmap/courses.map.xml"/>
+        <!--注册classes.map.xml-->
+        <mapper resource="sqlmap/classes.map.xml"/>
+    </mappers>
+</configuration>
